@@ -200,7 +200,7 @@ template <class T> struct PyCuVec_tp {
 template <class T> PyCuVec<T> *PyCuVec_new() {
   static PyCuVec_tp<T> PyCuVec_T;
   if (PyType_Ready(&PyCuVec_T.tp_obj) < 0) return NULL;
-  return (PyCuVec<T> *)PyCuVec_T.tp_obj.tp_alloc(&PyCuVec_T.tp_obj, 1);
+  return (PyCuVec<T> *)PyCuVec_T.tp_obj.tp_alloc(&PyCuVec_T.tp_obj, 0);
 }
 template <class T> PyCuVec<T> *PyCuVec_zeros(std::vector<Py_ssize_t> shape) {
   PyCuVec<T> *self = PyCuVec_new<T>();
